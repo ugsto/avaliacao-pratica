@@ -33,7 +33,7 @@
 		"@babel/preset-env": "^7.21.4",
 		"@babel/preset-typescript": "^7.21.4",
 		"@types/jest": "^29.5.0",
-		"@types/node": "^18.15.11",
+		"@types/node": "^20.1.1",
 		"@types/winston": "^2.4.4",
 		"@typescript-eslint/eslint-plugin": "^5.58.0",
 		"@typescript-eslint/parser": "^5.58.0",
@@ -52,8 +52,7 @@
 	},
 	"dependencies": {
 		"dotenv": "^16.0.3",
-		"mongodb": "^5.4.0",
-		"typeorm": "^0.3.16",
+		"mongoose": "^7.1.0",
 		"winston": "^3.8.2"
 	}
 }

@@ -1,24 +1,24 @@
 import {logger} from '@/loaders/logger';
-import {dataSource, initializeDatabase} from './loaders/database';
+import {loadDatabase} from './loaders/database';
 import {Student} from './models/student/entity';
 
 async function main() {
-  const database = await initializeDatabase(dataSource);
+  await loadDatabase();
 
-  logger.info('Database initialized');
-
-  await database.getRepository(Student).save({
+  await new Student({
     name: 'John',
     surname: 'Doe',
     email: 'foo@bar.com',
-    birthDate: new Date(),
+    birthDate: new Date('1990-01-01'),
     registrationNumber: 123_456,
-  });
+  }).save();
 
-  logger.info('Student saved');
+  const students = await Student.find();
 
-  logger.info({students: await database.getRepository(Student).find()});
+  logger.info(students);
 }
 
-// eslint-disable-next-line @typescript-eslint/no-floating-promises
-main();
+// eslint-disable-next-line unicorn/prefer-top-level-await
+main().catch(error => {
+  logger.error(error);
+});

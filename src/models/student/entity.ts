@@ -1,21 +1,16 @@
-/* eslint-disable unicorn/no-abusive-eslint-disable */
-/* eslint-disable */
-import { Column } from 'typeorm';
-import { BaseEntity } from '../base/entity';
+import {Schema, model} from 'mongoose';
 
-export class Student extends BaseEntity {
-    @Column()
-    name: string;
+export const studentSchema = new Schema({
+  name: {type: String, required: true},
+  surname: {type: String, required: true},
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  birthDate: {type: Date, required: true},
+  registrationNumber: {type: Number, required: true},
+});
 
-    @Column()
-    surname: string;
-
-    @Column()
-    email: string;
-
-    @Column()
-    birthDate: Date;
-
-    @Column()
-    registrationNumber: number;
-}
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const Student = model('Student', studentSchema);

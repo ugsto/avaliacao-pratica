@@ -6,7 +6,6 @@ export const studentSchema = new Schema({
   email: {
     type: String,
     required: true,
-    unique: true,
   },
   birthDate: {type: Date, required: true},
   registrationNumber: {type: Number, required: true},
